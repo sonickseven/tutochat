@@ -1,4 +1,6 @@
 tutochat
 ========
 
-is a video chat that i see bat now don't match
+se tiene qu editar la parte donde se llama la libreria jquery en index.jade por que esta local y ahi no esta
+
+you have that change line of file index.jade because the lib jaquery don't have local
