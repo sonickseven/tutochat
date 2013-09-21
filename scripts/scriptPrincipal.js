@@ -1,10 +1,10 @@
 var nombre;
 var arrayNames={};
-var websocket = io.connect(); // error no found 404
+var websocket = io.connect('http://localhost:8000');
 $(document).on('ready', iniciar);
 
 function iniciar(){
-	$('#forname').on('submit', function(e){
+	$('#formNombre').on('submit', function(e){
 		e.preventDefault();
 		var bandera=0;
 		var nombreAyuda=$('#name').val();
@@ -14,6 +14,7 @@ function iniciar(){
 		}
 		if(bandera===0){
 			sendNames();
+			$('#setNombre').fadeOut(500);
 		}else{
 			alert('Ese nombre ya existe');
 		}
