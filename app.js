@@ -8,14 +8,12 @@ app.configure(function(){
 app.get('/', function(req, res){
 	res.render('index.jade', {layout: false});
 });
-app.listen(8080);
-
-// lo de websockets
+server.listen(8000);
 var io=require('socket.io').listen(server);
 var usuariosConectados={};
 io.sockets.on('connection', function(socket){
 	socket.on('enviarNombre', function(datos){
-		if(usuariosConectados[datos]){
+		if(usuariosConectados[datos]){//valida que no haya otro usuario con el mismo nombre
 			socket.emit('errorName');
 		}else{
 			socket.nickname=datos;
@@ -26,9 +24,9 @@ io.sockets.on('connection', function(socket){
 	});
 	socket.on('enviarMensaje', function(mensaje){
 		var data=[socket.nickname, mensaje];
-		io.socketsemit('newMessage', data);
+		io.sockets.emit('newMessage', data);
 	});
-	sockets.on('disconnect', function(){
+	socket.on('disconnect', function(){
 		delete usuariosConectados[socket.nickname];
 		data=[usuariosConectados, socket.nickname];
 		io.sockets.emit('usuariosCoenctado', data);
