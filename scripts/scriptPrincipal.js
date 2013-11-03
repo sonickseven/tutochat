@@ -1,6 +1,6 @@
 var nombre;
 var arrayNames={};
-var websocket = io.connect('http://localhost:8000');
+var websocket = io.connect('/');
 $(document).on('ready', iniciar);
 
 function iniciar(){
